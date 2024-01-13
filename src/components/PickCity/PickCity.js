@@ -4,17 +4,22 @@ import styles from './PickCity.module.scss';
 
 import { useState } from 'react';
 
-const PickCity = () => {
-  const [city, setCity] = useState('');
+const PickCity = ({ onSubmit }) => {
+    const [city, setCity] = useState('');
 
-  return (
-    <form className={styles.pickCityForm}> 
-      <label>
-        <TextInput placeholder="Enter city name...." value={city} onChange={e => setCity(e.target.value)} />
-      </label>
-      <Button>Search</Button>
-    </form>
-  );
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onSubmit(city);
+    };
+
+    return (
+        <form className={styles.pickCityForm} onSubmit={handleSubmit}>
+            <label>
+                <TextInput placeholder="Enter city name...." value={city} onChange={e => setCity(e.target.value)} />
+            </label>
+            <Button type="submit">Search</Button>
+        </form>
+    );
 };
 
 export default PickCity;
