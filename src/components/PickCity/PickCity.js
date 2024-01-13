@@ -10,6 +10,7 @@ const PickCity = ({ onSubmit }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         onSubmit(city);
+        setCity('');
     };
 
     return (
